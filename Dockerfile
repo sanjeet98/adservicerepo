@@ -1,3 +1,3 @@
-FROM tomcat:8
-LABEL app=my-app
-COPY target/*.war /usr/local/tomcat/webapps/myweb.war
+FROM adoptopenjdk/openjdk11:alpine-jre
+ADD target/adservice-app.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
