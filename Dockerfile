@@ -1,3 +1,5 @@
-FROM tomcat:8
-LABEL app=my-app
-COPY target/*.war /usr/local/tomcat/webapps/myweb.war
+FROM openjdk:8
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} ad-service.jar
+ENTRYPOINT ["java","-jar","/ad-service.jar"]
+EXPOSE 9092
